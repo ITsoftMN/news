@@ -1,7 +1,8 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Ayush
- * Date: 4/16/2018
- * Time: 3:50 PM
- */
+@extends('admin.layouts.master')
+
+@section('content')
+    @include('admin.partials.header')
+    @include('admin.partials.sidebar')
+    @include('admin.pages.dashboard')
+    @include('admin.partials.footer')
+@endsection
