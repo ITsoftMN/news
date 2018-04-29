@@ -22,3 +22,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //category
 Route::get('/category/show','CategoryController@index');
 Route::post('/category/post','CategoryController@post');
+
+//subcat
+Route::post('/sub/cat/post','CategoryController@subCatPost');

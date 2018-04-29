@@ -14,4 +14,10 @@ class SubCategory extends Model
         'name',
         'cat_id'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
 }

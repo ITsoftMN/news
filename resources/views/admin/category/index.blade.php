@@ -37,7 +37,46 @@
 
                     </div>
                     <!-- /.box -->
+
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Bordered Table</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success')}}
+                                </div>
+                            @endif
+                            <form method="post" action="{{url('sub/cat/post')}}" id="category-form">
+                                {!! csrf_field() !!}
+
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label>Select</label>
+                                        {!! Form::select('cat_id', $selecttype, null, ['class' => 'form-control']) !!}
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">subcategories add +</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Categories add">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="button" class="btn btn-primary btn-sm pull-right" id="subcat-submit" value="Хадгалах">
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+
+                        </div>
+
+                    </div>
                 </div>
+
                 <div class="col-md-6">
                     <div class="box">
                         <div class="box-header with-border">
