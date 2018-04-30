@@ -38,10 +38,7 @@ class CategoryController extends Controller
             return redirect()->back()->with(['success'=>'Амжилттай']);
         }
     }
-    public  function showSub($id){
-        $sub = SubCategory::where('cat_id',$id)->get();
-        return json_encode($sub);
-    }
+
     public  function subCatPost(Request $request){
         $subcat = New SubCategory;
         $subcat->name = $request->name;

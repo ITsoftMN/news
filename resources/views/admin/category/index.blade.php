@@ -17,11 +17,16 @@
             height: auto;
 
         }
+        p{
+            margin: 0px;
+        }
     </style>
     <div class="content-wrapper">
         <section class="content">
 
-                    
+
+
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="box">
@@ -42,7 +47,47 @@
 
                                                 <span class="badge bg-grey">{{$c->name}}</span>
                                             </div>
-                                            <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-info"><i class="fa fa-plus"></i></button>
+                                            <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-info{{$c->id}}"><i class="fa fa-plus"></i></button>
+                                        </div>
+
+                                        <div class="modal modal-info fade" id="modal-info{{$c->id}}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title">Category: &nbsp;&nbsp;{{$c->name}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <b>Sub categories: </b>
+                                                        <div id="subcat-div-for{{$c->id}}">
+                                                            @foreach($c->subCategories as $subCat)
+                                                                <p>{{$subCat->name}}</p>
+                                                            @endforeach
+                                                        </div>
+
+                                                        {{Form::open(['action'=>'CategoryController@subCatPost'])}}
+
+                                                            <div class="box-body">
+                                                                <input type="hidden" name="cat_id" value="{{$c->id}}">
+                                                                <label for="exampleInputEmail1">subcategories add +</label>
+
+                                                                <input type="text" class="form-control" id="subcat{{$c->id}}" name="name" placeholder=" sub Categories add">
+
+                                                            </div>
+
+
+                                                        {{Form::close()}}
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                                        <button type="button" id="newssubcat" onclick="createSubCat(this)" class="btn btn-outline">Save changes</button>
+                                                    </div>
+                                                </div>
+                                                <!-- /.modal-content -->
+                                            </div>
+                                            <!-- /.modal-dialog -->
                                         </div>
                                     @endforeach
 
@@ -51,7 +96,7 @@
                                 </div>
                                 <form method="post" action="{{url('category/post')}}" class="form-group"  id="form-cat">
                                     {!! csrf_field() !!}
-                                    <input type="text" class="form-control" id="exampleInpdata-toggle="modal"utEmail1" name="name" placeholder="Categories add">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Categories add">
                                     <input type="button" class="btn btn-primary btn-sm pull-right" id="category-submit" onclick="AddMenuItem()" value="Хадгалах">
                                 </form>
 

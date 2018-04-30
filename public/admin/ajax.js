@@ -17,21 +17,27 @@ $('#category-submit').click(function () {
 });
 
 
-$('#subcat-submit').click(function () {
-    var form = $('#sub-category-form');
+function createSubCat(item){
+
+    var form =  $(item).parent().parent().find('form');
     var data = form.serialize();
     var url = form.attr('action');
     var post = form.attr('method');
-   $.ajax({
-       type: post,
-       url : url,
-       data: data,
-       dataType : 'json'
-   }).done(function (data) {
-       alert(data.name);
-       $('input').val('');
-   });
-});
+
+    $.ajax({
+        type: post,
+        url : url,
+        data: data,
+        dataType : 'json'
+    }).done(function (data) {
+        console.log(data.cat_id);
+        console.log('#modal-info'+data.cat_id);
+        $('#subcat-div-for'+data.cat_id).append('<p>'+ data.name +'</p>');
+        $('#subcat'+data.cat_id).val('');
+    });
+}
+
+
 
 //
 $('#Addmenu').click(function () {
