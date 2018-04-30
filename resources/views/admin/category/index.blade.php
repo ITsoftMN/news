@@ -5,7 +5,7 @@
     @include('admin.partials.sidebar')
     <style>
         .navbar-cat{
-            width: 75%;
+            width: 90%;
             height: auto;
             float: left;
         }
@@ -37,17 +37,18 @@
                         <!-- /.box-header -->
                         <div class="box-body">
 
-                            <div class="form-group">
+                            <div class="col-md-6">
 
                                 <div id="main-cat">
                                     <div id="empty"></div>
                                     @foreach($cat as $key => $c)
-                                        <div class="item-cat col-md-2">
+                                        <div class="item-cat">
                                             <div data-id="{{$c->id}}" class="navbar-cat">
-
+                                                <span class="badge bg-red"></span>
                                                 <span class="badge bg-grey">{{$c->name}}</span>
+                                                <span class="badge bg-green">links + "{{$c->links}}"</span>
                                             </div>
-                                            <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal-info{{$c->id}}"><i class="fa fa-plus"></i></button>
+                                            <button class="btn btn-primary btn-xs" data-toggle="modal" title="sub menu add" data-target="#modal-info{{$c->id}}"><i class="fa fa-plus"></i></button>
                                         </div>
 
                                         <div class="modal modal-info fade" id="modal-info{{$c->id}}">
@@ -56,13 +57,13 @@
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title">Category: &nbsp;&nbsp;{{$c->name}}</h4>
+                                                        <h4 class="modal-title">Category: &nbsp;&nbsp;{{$c->name}},&nbsp;&nbsp;Links: &nbsp;&nbsp;{{$c->links}}</h4>
                                                     </div>
                                                     <div class="modal-body">
                                                         <b>Sub categories: </b>
                                                         <div id="subcat-div-for{{$c->id}}">
                                                             @foreach($c->subCategories as $subCat)
-                                                                <p>{{$subCat->name}}</p>
+                                                                <p>{{$subCat->name}}&nbsp;&nbsp;&nbsp;,<b>links</b> + "{{$subCat->links}}"</p>
                                                             @endforeach
                                                         </div>
 
@@ -94,120 +95,125 @@
 
 
                                 </div>
+
+                            </div>
+                            <div class="col-md-6">
                                 <form method="post" action="{{url('category/post')}}" class="form-group"  id="form-cat">
                                     {!! csrf_field() !!}
-                                    <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Categories add">
-                                    <input type="button" class="btn btn-primary btn-sm pull-right" id="category-submit" onclick="AddMenuItem()" value="Хадгалах">
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Categories name add">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" name="links" placeholder="Category link">
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <input type="button" class="btn btn-primary btn-sm pull-right" id="category-submit" onclick="AddMenuItem()" value="Хадгалах">
+                                    </div>
                                 </form>
-
-
                             </div>
 
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Bordered Table</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            @if(Session::has('success'))
-                            <div class="alert alert-success">
-                                {{ Session::get('success')}}
-                            </div>
-                            @endif
-                            <form method="post" action="{{url('category/post')}}" id="category-form">
-                                {!! csrf_field() !!}
-                                <div class="box-body">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">categories add +</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Categories add">
-                                    </div>
+                    {{--<div class="box">--}}
+                        {{--<div class="box-header with-border">--}}
+                            {{--<h3 class="box-title">Bordered Table</h3>--}}
+                        {{--</div>--}}
+                        {{--<!-- /.box-header -->--}}
+                        {{--<div class="box-body">--}}
+                            {{--@if(Session::has('success'))--}}
+                            {{--<div class="alert alert-success">--}}
+                                {{--{{ Session::get('success')}}--}}
+                            {{--</div>--}}
+                            {{--@endif--}}
+                            {{--<form method="post" action="{{url('category/post')}}" id="category-form">--}}
+                                {{--{!! csrf_field() !!}--}}
+                                {{--<div class="box-body">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<label for="exampleInputEmail1">categories add +</label>--}}
+                                        {{--<input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Categories add">--}}
+                                    {{--</div>--}}
 
-                                    <div class="form-group">
-                                        <input type="button" class="btn btn-primary btn-sm pull-right" id="category-submit" value="Хадгалах">
-                                    </div>
-                                </div>
-                            </form>
+                                    {{--<div class="form-group">--}}
+                                        {{--<input type="button" class="btn btn-primary btn-sm pull-right" id="category-submit" value="Хадгалах">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</form>--}}
 
 
-                        </div>
+                        {{--</div>--}}
 
-                    </div>
+                    {{--</div>--}}
                     <!-- /.box -->
 
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Bordered Table</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            @if(Session::has('success'))
-                                <div class="alert alert-success">
-                                    {{ Session::get('success')}}
-                                </div>
-                            @endif
-                            <form method="post" action="{{url('sub/cat/post')}}" id="sub-category-form">
-                                {!! csrf_field() !!}
-                                <div class="box-body">
-                                    <div class="form-group">
-                                        <label>Select</label>
-                                        {!! Form::select('cat_id', $selecttype, null, ['class' => 'form-control']) !!}
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">subcategories add +</label>
-                                        <input type="text" class="form-control" id="subcat" name="name" placeholder=" sub Categories add">
-                                    </div>
+                    {{--<div class="box">--}}
+                        {{--<div class="box-header with-border">--}}
+                            {{--<h3 class="box-title">Bordered Table</h3>--}}
+                        {{--</div>--}}
+                        {{--<!-- /.box-header -->--}}
+                        {{--<div class="box-body">--}}
+                            {{--@if(Session::has('success'))--}}
+                                {{--<div class="alert alert-success">--}}
+                                    {{--{{ Session::get('success')}}--}}
+                                {{--</div>--}}
+                            {{--@endif--}}
+                            {{--<form method="post" action="{{url('sub/cat/post')}}" id="sub-category-form">--}}
+                                {{--{!! csrf_field() !!}--}}
+                                {{--<div class="box-body">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<label>Select</label>--}}
+                                        {{--{!! Form::select('cat_id', $selecttype, null, ['class' => 'form-control']) !!}--}}
+                                    {{--</div>--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<label for="exampleInputEmail1">subcategories add +</label>--}}
+                                        {{--<input type="text" class="form-control" id="subcat" name="name" placeholder=" sub Categories add">--}}
+                                    {{--</div>--}}
 
-                                    <div class="form-group">
-                                        <input type="button" class="btn btn-primary btn-sm pull-right" id="subcat-submit" value="Хадгалах">
-                                    </div>
+                                    {{--<div class="form-group">--}}
+                                        {{--<input type="button" class="btn btn-primary btn-sm pull-right" id="subcat-submit" value="Хадгалах">--}}
+                                    {{--</div>--}}
 
-                                </div>
+                                {{--</div>--}}
 
-                            </form>
-
-
-                        </div>
-
-                    </div>
+                            {{--</form>--}}
 
 
+                        {{--</div>--}}
 
-
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Menu item +</h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            @if(Session::has('success'))
-                                <div class="alert alert-success">
-                                    {{ Session::get('success')}}
-                                </div>
-                            @endif
-                            <div class="form-group">
-                                <div id="main">
-                                    <input type="button" id="btAdd" value="Дэд цэс үүсгэх +" class="bt btn btn-primary" />
-                                    <input type="button" id="btRemove" value="Устгах -" class="bt btn btn-danger"/>
-                                    <input type="button" id="btRemoveAll" value="Бүгдийг устгах -" class="bt btn btn-danger" /><br />
-                                </div>
-                                <form method="post" action="{{url('category/post')}}" class="form-group"  id="formid">
-                                    {!! csrf_field() !!}
-                                </form>
-                            </div>
+                    {{--</div>--}}
 
 
 
-                        </div>
 
-                    </div>
+                    {{--<div class="box">--}}
+                        {{--<div class="box-header with-border">--}}
+                            {{--<h3 class="box-title">Menu item +</h3>--}}
+                        {{--</div>--}}
+                        {{--<!-- /.box-header -->--}}
+                        {{--<div class="box-body">--}}
+                            {{--@if(Session::has('success'))--}}
+                                {{--<div class="alert alert-success">--}}
+                                    {{--{{ Session::get('success')}}--}}
+                                {{--</div>--}}
+                            {{--@endif--}}
+                            {{--<div class="form-group">--}}
+                                {{--<div id="main">--}}
+                                    {{--<input type="button" id="btAdd" value="Дэд цэс үүсгэх +" class="bt btn btn-primary" />--}}
+                                    {{--<input type="button" id="btRemove" value="Устгах -" class="bt btn btn-danger"/>--}}
+                                    {{--<input type="button" id="btRemoveAll" value="Бүгдийг устгах -" class="bt btn btn-danger" /><br />--}}
+                                {{--</div>--}}
+                                {{--<form method="post" action="{{url('category/post')}}" class="form-group"  id="formid">--}}
+                                    {{--{!! csrf_field() !!}--}}
+                                {{--</form>--}}
+                            {{--</div>--}}
+
+                        {{--</div>--}}
+
+                    {{--</div>--}}
 
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="box">
                         <div class="box-header with-border">
                             <h3 class="box-title">Үндсэн цэс</h3>
@@ -220,19 +226,23 @@
                                 <tr>
                                     <th style="width: 10px">#</th>
                                     <th>Нэр</th>
-                                    <th>Progress</th>
-                                    <th style="width: 40px">Label</th>
+                                    <th>Sub categories</th>
+                                    <th>Links</th>
                                 </tr>
                                 @foreach($cat as $key => $c)
                                     <tr>
                                         <td>{{$key}}</td>
                                         <td>{{$c->name}}</td>
                                         <td>
-                                            <div class="progress progress-xs">
-                                                <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                            </div>
+                                            @foreach($c->subCategories as $subCat)
+
+                                                <span class="badge bg-green">{{$subCat->name}}</span>
+                                            @endforeach
+
                                         </td>
-                                        <td><span class="badge bg-red">55%</span></td>
+                                        <td><span class="badge bg-green">{{$c->links}}</span></td>
+
+
                                     </tr>
                                 @endforeach
 
@@ -243,29 +253,29 @@
                         <div class="box-header with-border">
                             <h3 class="box-title">Дэд цэс</h3>
                         </div>
-                        <div class="box-body">
+                        {{--<div class="box-body">--}}
 
-                            <table class="table table-bordered" id="category-list">
-                                <tbody>
-                                <tr>
-                                    <th style="width: 10px">#</th>
-                                    <th>Нэр</th>
-                                    <th>Үндсэн цэс</th>
-                                    <th style="width: 40px">Label</th>
-                                </tr>
-                                @foreach($subcat as $key => $c)
-                                    <tr>
-                                        <td>{{$key}}</td>
-                                        <td>{{$c->name}}</td>
-                                        <td><span class="badge bg-green">{{$c->category->name}}</span></td>
-                                        <td><span class="badge bg-red">55%</span></td>
-                                    </tr>
-                                @endforeach
+                            {{--<table class="table table-bordered" id="category-list">--}}
+                                {{--<tbody>--}}
+                                {{--<tr>--}}
+                                    {{--<th style="width: 10px">#</th>--}}
+                                    {{--<th>Нэр</th>--}}
+                                    {{--<th>Үндсэн цэс</th>--}}
+                                    {{--<th style="width: 40px">Label</th>--}}
+                                {{--</tr>--}}
+                                {{--@foreach($subcat as $key => $c)--}}
+                                    {{--<tr>--}}
+                                        {{--<td>{{$key}}</td>--}}
+                                        {{--<td>{{$c->name}}</td>--}}
+                                        {{--<td><span class="badge bg-green">{{$c->category->name}}</span></td>--}}
+                                        {{--<td><span class="badge bg-red">55%</span></td>--}}
+                                    {{--</tr>--}}
+                                {{--@endforeach--}}
 
-                                </tbody>
-                            </table>
-                            {!! $subcat->links() !!}
-                        </div>
+                                {{--</tbody>--}}
+                            {{--</table>--}}
+                            {{--{!! $subcat->links() !!}--}}
+                        {{--</div>--}}
 
                     </div>
                     <!-- /.box -->

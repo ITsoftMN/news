@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     //
     public function index(){
-        $cat = Category::orderBy('created_at','desc')->paginate(12);
+        $cat = Category::orderBy('created_at','desc')->paginate(20);
 
         $selecttype = ['----'];
         foreach ($cat as $c){
@@ -28,6 +28,7 @@ class CategoryController extends Controller
 
         $category = New Category;
         $category->name = $request->name;
+        $category->links = $request->links;
         $category->save();
         //dd($category->name);
         if ($request->ajax()){
