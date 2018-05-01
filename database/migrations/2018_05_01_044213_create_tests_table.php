@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubCatTable extends Migration
+class CreateTestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateSubCatTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_cat', function (Blueprint $table) {
+        Schema::create('tests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cat_id')->unsigned();
-            $table->string('name');
-            $table->string('links');
             $table->timestamps();
-            $table->foreign('cat_id')->references('id')->on('category');
         });
     }
 
@@ -30,6 +26,6 @@ class CreateSubCatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_cat');
+        Schema::dropIfExists('tests');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\News;
 use Illuminate\Http\Request;
 
 class Newscontroller extends Controller
@@ -37,6 +38,19 @@ class Newscontroller extends Controller
     public function store(Request $request)
     {
         //
+        if($request->hasFile('file')){
+            dd(($request->file)->store('news'));
+            $filename = ($request->file)->store('news');
+
+            $news = new News;
+            $news->title = $request->title;
+            $news->medium_title = $request->second_title;
+            $news->description = $request->desc;
+            $news->description = $request->desc;
+            $news->image = $filename;
+            $news->save();
+        }
+        return redirect()->back();
     }
 
     /**
