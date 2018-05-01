@@ -27,4 +27,4 @@ Route::post('/category/post','CategoryController@post');
 Route::post('/sub/cat/post','CategoryController@subCatPost');
 Route::get('/show-cat-sub/{id}','CategoryController@showSub');
 
-Route::resource('news','PostController');
+Route::resource('news','Newscontroller');

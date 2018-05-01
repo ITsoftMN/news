@@ -14,6 +14,7 @@ class Newscontroller extends Controller
     public function index()
     {
         //
+        return view('admin.news.index');
     }
 
     /**
@@ -24,6 +25,7 @@ class Newscontroller extends Controller
     public function create()
     {
         //
+        return view('admin.news.create');
     }
 
     /**

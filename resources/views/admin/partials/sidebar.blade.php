@@ -44,9 +44,9 @@
             </li>
 
             <li>
-                {{--<a href="{{route('news.show')}}">--}}
-                    {{--<i class="fa fa-newspaper"></i> <span>Мэдээ</span>--}}
-                {{--</a>--}}
+                <a href="{{route('news.index')}}">
+                    <i class="fa fa-newspaper-o"></i> <span>News</span>
+                </a>
             </li>
 
             <li class="header">LABELS</li>

@@ -93,7 +93,18 @@ $('.navbar-cat').click(function () {
 
 
 
-
+$(document).ready(function () {
+    console.log('sdad');
+    var currentdate = new Date();
+    var d = "Now: " + currentdate.getDate() + "/"
+        + (currentdate.getMonth()+1)  + "/"
+        + currentdate.getFullYear() + " - "
+        + currentdate.getHours() + ":"
+        + currentdate.getMinutes() + ":"
+        + currentdate.getSeconds();
+    $('#now-date').html(d);
+    console.log(d);
+});
 
 
 
