@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\News;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
+use Image;
 class Newscontroller extends Controller
 {
     /**
@@ -39,7 +41,9 @@ class Newscontroller extends Controller
     {
         //
         if($request->hasFile('file')){
-            dd(($request->file)->store('news'));
+
+
+
             $filename = ($request->file)->store('news');
 
             $news = new News;
