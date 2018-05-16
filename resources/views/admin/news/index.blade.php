@@ -8,6 +8,11 @@
         <section class="content">
             <div class="col-md-12">
                 <div class="box box-info">
+                    @if(session('news_edit'))
+                        <div class="alert alert-success">
+                            {{session('news_edit')}}
+                        </div>
+                    @endif
                     <div class="box-header with-border">
                         <h3 class="box-title">News List</h3>
 
@@ -28,6 +33,7 @@
                                         <th>Image</th>
                                         <th>Time</th>
                                         <th>Types</th>
+                                        <th>Settings</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,6 +51,16 @@
                                             @else
                                                 <button id="news-slider-add{{$n->id}}" onclick="newsSlider({{$n->id}})" class="btn btn-danger btn-xs">slider -</button>
                                             @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{route('news.edit',$n->id)}}" class="btn btn-warning btn-xs" title="edit">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+
+                                            <a href="#" class="btn btn-danger btn-xs" title="delete">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+
                                         </td>
                                     </tr>
                                 @endforeach

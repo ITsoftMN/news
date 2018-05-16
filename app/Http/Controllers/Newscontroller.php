@@ -18,7 +18,7 @@ class Newscontroller extends Controller
     {
         //
         $i = 1;
-        $news = News::orderBy('created_at','desc')->paginate(30);
+        $news = News::orderBy('created_at','desc')->get();
         return view('admin.news.index',compact('i'))->with('news',$news);
     }
 
@@ -58,7 +58,6 @@ class Newscontroller extends Controller
             $news->title = $request->title;
             $news->medium_title = $request->second_title;
             $news->description = $request->desc;
-            $news->description = $request->desc;
             $news->cat_id = $request->cat_id;
             $news->image = $imageName;
             $news->save();
@@ -86,6 +85,8 @@ class Newscontroller extends Controller
     public function edit($id)
     {
         //
+        $news = News::find($id);
+        return view('admin.news.edit',compact('news'));
     }
 
     /**
@@ -98,6 +99,34 @@ class Newscontroller extends Controller
     public function update(Request $request, $id)
     {
         //
+        $news = News::findOrFail($id);
+        if($request->hasFile('file')){
+
+            
+            $filename = $request->file('file');
+            $imageName = time().'.'.$filename->getClientOriginalExtension();
+            Image::make($filename)->resize(600,null,function ($constraint){
+                $constraint->aspectRatio();
+            })->save(public_path('uploads/news/small/'.$imageName));
+
+            Image::make($filename)->save('uploads/news/original/'.$imageName);
+
+            $news->update([
+                'title' => $request->input('title'),
+                'medium_title' => $request->input('second_title'),
+                'description' =>$request->input('desc'),
+                'image' => $imageName
+            ]);
+
+        }else{
+            $news->update([
+                'title' => $request->input('title'),
+                'medium_title' => $request->input('second_title'),
+                'description' =>$request->input('desc'),
+            ]);
+        }
+        \Session::flash('news_edit','Successfully edited');
+        return redirect()->route('news.index');
     }
 
     /**
