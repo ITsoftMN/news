@@ -8,7 +8,7 @@
     <section class="content-header">
         <h1>
             News create
-            <small>example</small>
+
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -27,19 +27,26 @@
                 <form action="{{route('news.store')}}" method="post" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <ul class="timeline">
-                        <!-- timeline time label -->
+
                         <li class="time-label">
                   <span class="bg-red" id="now-date">
 
                   </span>
                         </li>
-                        <!-- /.timeline-label -->
-                        <!-- timeline item -->
+
                         <li>
                             <i class="fa fa-envelope bg-blue"></i>
 
                             <div class="timeline-item">
                                 <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                <div class="timeline-body">
+                                    <select class="form-control" name="cat_id">
+                                        <option>--category choose--</option>
+                                        @foreach($cat as $c)
+                                            <option value="{{$c->id}}">{{$c->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
                                 <h3 class="timeline-header"><a href="#">Title</a></h3>
 
@@ -60,17 +67,19 @@
                                    </textarea>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Upload Image</label>
-                                    <div class="input-group">
+                                <div class="timeline-body">
+                                    <div class="form-group">
+                                        <label>Upload Image</label>
+                                        <div class="input-group">
                                         <span class="input-group-btn">
                                             <span class="btn btn-default btn-file">
                                                 Browse… <input type="file" name="file" id="imgInp">
                                             </span>
                                         </span>
-                                        <input type="text" class="form-control" readonly>
+                                            <input type="text" class="form-control" readonly>
+                                        </div>
+                                        <img id='img-upload'/>
                                     </div>
-                                    <img id='img-upload'/>
                                 </div>
 
                                 <div class="timeline-footer">

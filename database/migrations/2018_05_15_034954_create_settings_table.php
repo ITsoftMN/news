@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSubCatTable extends Migration
+class CreateSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateSubCatTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_cat', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('cat_id')->unsigned();
-            $table->string('name');
-            $table->string('links');
-            $table->foreign('cat_id')
-                ->references('id')->on('category')
-                ->onDelete('cascade');
+            $table->mediumText('logo');
+            $table->string('title');
+            $table->string('copyright');
+            $table->string('fb_link');
+            $table->string('tw_link');
+            $table->string('you_link');
+            $table->string('other_link');
             $table->timestamps();
         });
     }
@@ -32,8 +33,6 @@ class CreateSubCatTable extends Migration
      */
     public function down()
     {
-
-        Schema::dropIfExists('sub_cat');
-
+        Schema::dropIfExists('settings');
     }
 }

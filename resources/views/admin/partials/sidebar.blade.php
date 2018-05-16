@@ -48,6 +48,11 @@
                     <i class="fa fa-newspaper-o"></i> <span>News</span>
                 </a>
             </li>
+            <li>
+                <a href="{{route('pages.index')}}">
+                    <i class="fa fa-newspaper-o"></i> <span>Pages</span>
+                </a>
+            </li>
 
             <li class="header">LABELS</li>
 

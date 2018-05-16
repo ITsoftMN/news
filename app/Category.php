@@ -20,4 +20,9 @@ class Category extends Model
     {
         return $this->hasMany('App\SubCategory','cat_id');
     }
+
+    public function news()
+    {
+        return $this->hasMany('App\News','cat_id');
+    }
 }

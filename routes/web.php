@@ -28,3 +28,5 @@ Route::post('/sub/cat/post','CategoryController@subCatPost');
 Route::get('/show-cat-sub/{id}','CategoryController@showSub');
 
 Route::resource('news','Newscontroller');
+Route::get('news/slider/add/{id}','Newscontroller@sliderFromNews');
+Route::resource('pages','PagesController');

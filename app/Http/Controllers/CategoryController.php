@@ -43,6 +43,7 @@ class CategoryController extends Controller
     public  function subCatPost(Request $request){
         $subcat = New SubCategory;
         $subcat->name = $request->name;
+        $subcat->links = $request->links;
         $subcat->cat_id = $request->cat_id;
         $subcat->save();
 

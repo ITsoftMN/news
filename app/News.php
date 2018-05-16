@@ -11,12 +11,19 @@ class News extends Model
 
     protected $fillable = [
         'title',
+        'cat_id',
+        'sub_cat_id',
         'medium_title',
         'description',
         'image',
         'seen',
         'commend',
-        'author'
+        'author',
+        'slider',
+        'featured'
     ];
-
+    public function Category()
+    {
+        return $this->belongsTo('App\Category','cat_id');
+    }
 }

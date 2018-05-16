@@ -74,6 +74,9 @@
                                                                 <label for="exampleInputEmail1">subcategories add +</label>
 
                                                                 <input type="text" class="form-control" id="subcat{{$c->id}}" name="name" placeholder=" sub Categories add">
+                                                                <label for="exampleInputEmail1">sub cat links</label>
+
+                                                                <input type="text" class="form-control" name="links" placeholder=" links">
 
                                                             </div>
 

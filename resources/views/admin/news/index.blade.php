@@ -14,7 +14,6 @@
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
                         </div>
                     </div>
                     <!-- /.box-header -->
@@ -23,22 +22,32 @@
                             <table class="table no-margin">
                                 <thead>
                                     <tr>
-                                        <th>Order ID</th>
-                                        <th>Item</th>
-                                        <th>Status</th>
-                                        <th>Popularity</th>
+                                        <th>ID</th>
+                                        <th>Category</th>
+                                        <th>Title</th>
+                                        <th>Image</th>
+                                        <th>Time</th>
+                                        <th>Types</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                    <td>Call of Duty IV</td>
-                                    <td><span class="label label-success">Shipped</span></td>
-                                    <td>
 
-                                    </td>
-                                </tr>
-
+                                @foreach($news as $n)
+                                    <tr>
+                                        <td>{{$i++}}</td>
+                                        <td><span class="label label-success">{!! $n->category->name !!}</span></td>
+                                        <td>{!! $n->title !!}</td>
+                                        <td><img style="width:150px;" src="uploads/news/small/{{$n->image}}"></td>
+                                        <td>{{$n->created_at->diffForHumans()}}</td>
+                                        <td>
+                                            @if($n->slider == 0)
+                                                <button id="news-slider-add{{$n->id}}" onclick="newsSlider({{$n->id}})" class="btn btn-primary btn-xs">slider +</button>
+                                            @else
+                                                <button id="news-slider-add{{$n->id}}" onclick="newsSlider({{$n->id}})" class="btn btn-danger btn-xs">slider -</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

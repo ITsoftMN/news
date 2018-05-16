@@ -37,7 +37,31 @@ function createSubCat(item){
     });
 }
 
+//news add slider
 
+function newsSlider(item){
+
+    $.ajax({
+        type: 'GET',
+        url : 'news/slider/add/'+item,
+    }).done(function (data) {
+        //alert('success');
+        //console.log(data);
+        if(data == 0){
+            var btn = $('#news-slider-add'+item).removeAttr('class');
+            btn.addClass('btn btn-primary btn-xs');
+            btn.text('slider +');
+            alert('this news successfully slider remove !!!');
+        }
+        else {
+            var btn = $('#news-slider-add'+item).removeAttr('class');
+            btn.addClass('btn btn-danger btn-xs');
+            btn.text('slider -');
+            alert('this news successfully slider added');
+        }
+
+    });
+}
 
 //
 $('#Addmenu').click(function () {

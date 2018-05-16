@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\News;
+use App\SubCategory;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Input;
 use Image;
 class Newscontroller extends Controller
 {
@@ -17,7 +17,9 @@ class Newscontroller extends Controller
     public function index()
     {
         //
-        return view('admin.news.index');
+        $i = 1;
+        $news = News::orderBy('created_at','desc')->paginate(30);
+        return view('admin.news.index',compact('i'))->with('news',$news);
     }
 
     /**
@@ -28,7 +30,9 @@ class Newscontroller extends Controller
     public function create()
     {
         //
-        return view('admin.news.create');
+        $cat = Category::all();
+        $sub = SubCategory::all();
+        return view('admin.news.create')->with('cat',$cat)->with('sub',$sub);
     }
 
     /**
@@ -42,19 +46,24 @@ class Newscontroller extends Controller
         //
         if($request->hasFile('file')){
 
+            $filename = $request->file('file');
+            $imageName = time().'.'.$filename->getClientOriginalExtension();
+            Image::make($filename)->resize(600,null,function ($constraint){
+                $constraint->aspectRatio();
+            })->save(public_path('uploads/news/small/'.$imageName));
 
-
-            $filename = ($request->file)->store('news');
+            Image::make($filename)->save('uploads/news/original/'.$imageName);
 
             $news = new News;
             $news->title = $request->title;
             $news->medium_title = $request->second_title;
             $news->description = $request->desc;
             $news->description = $request->desc;
-            $news->image = $filename;
+            $news->cat_id = $request->cat_id;
+            $news->image = $imageName;
             $news->save();
         }
-        return redirect()->back();
+        return redirect()->route('news.index');
     }
 
     /**
@@ -100,5 +109,24 @@ class Newscontroller extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function sliderFromNews($id)
+    {
+        $slider = News::find($id);
+        if($slider->slider == 0)
+        {
+            $slider->update([
+                'slider' => 1
+            ]);
+
+        }else{
+            $slider->update([
+                'slider' => 0
+            ]);
+
+        }
+
+        return json_encode($slider->slider);
     }
 }
