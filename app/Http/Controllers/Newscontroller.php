@@ -102,7 +102,7 @@ class Newscontroller extends Controller
         $news = News::findOrFail($id);
         if($request->hasFile('file')){
 
-            
+
             $filename = $request->file('file');
             $imageName = time().'.'.$filename->getClientOriginalExtension();
             Image::make($filename)->resize(600,null,function ($constraint){

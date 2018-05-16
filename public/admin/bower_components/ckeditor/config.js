@@ -25,7 +25,6 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'colors' },
 		{ name: 'about' }
 	];
-
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
 	config.removeButtons = 'Underline,Subscript,Superscript';
@@ -35,4 +34,13 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+    config.filebrowserBrowseUrl = '/admin/bower_components/ckeditor/kcfinder/browse.php?opener=ckeditor&type=files';
+    config.filebrowserImageBrowseUrl = '/admin/bower_components/ckeditor/kcfinder/browse.php?opener=ckeditor&type=images';
+    config.filebrowserFlashBrowseUrl = '/admin/bower_components/ckeditor/kcfinder/browse.php?opener=ckeditor&type=flash';
+
+    /* Image/Flash upload feature using kcfinder tool */
+    config.filebrowserUploadUrl = '/admin/bower_components/ckeditor/kcfinder/upload.php?opener=ckeditor&type=files';
+    config.filebrowserImageUploadUrl = '/admin/bower_components/ckeditor/kcfinder/upload.php?opener=ckeditor&type=images';
+    config.filebrowserFlashUploadUrl = '/admin/bower_components/ckeditor/kcfinder/upload.php?opener=ckeditor&type=flash';
 };
