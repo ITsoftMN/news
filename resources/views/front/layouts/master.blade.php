@@ -35,6 +35,8 @@
 
 <body>
 
+@yield('content')
+
 <div id="back-to-top"></div>
 <!-- Back to top -->
 
