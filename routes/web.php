@@ -20,7 +20,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 //category
 Route::get('/category/show','CategoryController@index');
 Route::post('/category/post','CategoryController@post');
-
+Route::get('/category/edit/{id}','CategoryController@edit');
+Route::post('/category/update','CategoryController@update');
 //subcat
 Route::post('/sub/cat/post','CategoryController@subCatPost');
 Route::get('/show-cat-sub/{id}','CategoryController@showSub');

@@ -43,7 +43,7 @@
                                         <td>{{$i++}}</td>
                                         <td><span class="label label-success">{!! $n->category->name !!}</span></td>
                                         <td>{!! $n->title !!}</td>
-                                        <td><img style="width:150px;" src="uploads/news/small/{{$n->image}}"></td>
+                                        <td><img style="width:100px;" src="uploads/news/small/{{$n->image}}"></td>
                                         <td>{{$n->created_at->diffForHumans()}}</td>
                                         <td>
                                             @if($n->slider == 0)

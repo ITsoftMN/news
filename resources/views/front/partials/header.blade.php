@@ -4,11 +4,12 @@
         <div class="container">
             <div class="header-links">
                 <ul>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Advertisement</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#"><i class="fa fa-sign-in"></i> Login</a></li>
+                    <li><a href="#">{{$date}}, +{{$temp}}, {{$pNight}}</a></li>
+                    <li><a href="#">{{$cityname}}</a></li>
+                    <li><a href="#">{{$dollarN}}</a></li>
+                    <li><a href="#">{{$dollarC}} ₮</a></li>
+                    <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
+
                 </ul>
             </div>
             <div class="header-social">
@@ -20,6 +21,7 @@
                     <li><a href="#"><i class="fa fa-youtube"></i></a></li>
                 </ul>
             </div>
+
         </div>
     </div>
     <!-- /Top Header -->

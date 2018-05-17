@@ -77,9 +77,7 @@
                                                                 <label for="exampleInputEmail1">sub cat links</label>
 
                                                                 <input type="text" class="form-control" name="links" placeholder=" links">
-
                                                             </div>
-
 
                                                         {{Form::close()}}
 
@@ -118,101 +116,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    {{--<div class="box">--}}
-                        {{--<div class="box-header with-border">--}}
-                            {{--<h3 class="box-title">Bordered Table</h3>--}}
-                        {{--</div>--}}
-                        {{--<!-- /.box-header -->--}}
-                        {{--<div class="box-body">--}}
-                            {{--@if(Session::has('success'))--}}
-                            {{--<div class="alert alert-success">--}}
-                                {{--{{ Session::get('success')}}--}}
-                            {{--</div>--}}
-                            {{--@endif--}}
-                            {{--<form method="post" action="{{url('category/post')}}" id="category-form">--}}
-                                {{--{!! csrf_field() !!}--}}
-                                {{--<div class="box-body">--}}
-                                    {{--<div class="form-group">--}}
-                                        {{--<label for="exampleInputEmail1">categories add +</label>--}}
-                                        {{--<input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="Categories add">--}}
-                                    {{--</div>--}}
 
-                                    {{--<div class="form-group">--}}
-                                        {{--<input type="button" class="btn btn-primary btn-sm pull-right" id="category-submit" value="Хадгалах">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</form>--}}
-
-
-                        {{--</div>--}}
-
-                    {{--</div>--}}
-                    <!-- /.box -->
-
-                    {{--<div class="box">--}}
-                        {{--<div class="box-header with-border">--}}
-                            {{--<h3 class="box-title">Bordered Table</h3>--}}
-                        {{--</div>--}}
-                        {{--<!-- /.box-header -->--}}
-                        {{--<div class="box-body">--}}
-                            {{--@if(Session::has('success'))--}}
-                                {{--<div class="alert alert-success">--}}
-                                    {{--{{ Session::get('success')}}--}}
-                                {{--</div>--}}
-                            {{--@endif--}}
-                            {{--<form method="post" action="{{url('sub/cat/post')}}" id="sub-category-form">--}}
-                                {{--{!! csrf_field() !!}--}}
-                                {{--<div class="box-body">--}}
-                                    {{--<div class="form-group">--}}
-                                        {{--<label>Select</label>--}}
-                                        {{--{!! Form::select('cat_id', $selecttype, null, ['class' => 'form-control']) !!}--}}
-                                    {{--</div>--}}
-                                    {{--<div class="form-group">--}}
-                                        {{--<label for="exampleInputEmail1">subcategories add +</label>--}}
-                                        {{--<input type="text" class="form-control" id="subcat" name="name" placeholder=" sub Categories add">--}}
-                                    {{--</div>--}}
-
-                                    {{--<div class="form-group">--}}
-                                        {{--<input type="button" class="btn btn-primary btn-sm pull-right" id="subcat-submit" value="Хадгалах">--}}
-                                    {{--</div>--}}
-
-                                {{--</div>--}}
-
-                            {{--</form>--}}
-
-
-                        {{--</div>--}}
-
-                    {{--</div>--}}
-
-
-
-
-                    {{--<div class="box">--}}
-                        {{--<div class="box-header with-border">--}}
-                            {{--<h3 class="box-title">Menu item +</h3>--}}
-                        {{--</div>--}}
-                        {{--<!-- /.box-header -->--}}
-                        {{--<div class="box-body">--}}
-                            {{--@if(Session::has('success'))--}}
-                                {{--<div class="alert alert-success">--}}
-                                    {{--{{ Session::get('success')}}--}}
-                                {{--</div>--}}
-                            {{--@endif--}}
-                            {{--<div class="form-group">--}}
-                                {{--<div id="main">--}}
-                                    {{--<input type="button" id="btAdd" value="Дэд цэс үүсгэх +" class="bt btn btn-primary" />--}}
-                                    {{--<input type="button" id="btRemove" value="Устгах -" class="bt btn btn-danger"/>--}}
-                                    {{--<input type="button" id="btRemoveAll" value="Бүгдийг устгах -" class="bt btn btn-danger" /><br />--}}
-                                {{--</div>--}}
-                                {{--<form method="post" action="{{url('category/post')}}" class="form-group"  id="formid">--}}
-                                    {{--{!! csrf_field() !!}--}}
-                                {{--</form>--}}
-                            {{--</div>--}}
-
-                        {{--</div>--}}
-
-                    {{--</div>--}}
 
                 </div>
 
@@ -231,6 +135,7 @@
                                     <th>Нэр</th>
                                     <th>Sub categories</th>
                                     <th>Links</th>
+                                    <th>Settings</th>
                                 </tr>
                                 @foreach($cat as $key => $c)
                                     <tr>
@@ -244,18 +149,52 @@
 
                                         </td>
                                         <td><span class="badge bg-green">{{$c->links}}</span></td>
-
-
+                                        <td>
+                                            <button class="btn btn-primary btn-xs" data-toggle="modal" title="sub menu add" data-target="#modal-default{{$c->id}}"><i class="fa fa-plus"></i></button>
+                                        </td>
                                     </tr>
+
+                                    <div class="modal modal-default fade" id="modal-default{{$c->id}}">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">Category Edit</h4>
+                                                </div>
+                                                <div class="modal-body">
+
+
+                                                    {{Form::open(['action'=>'CategoryController@update'])}}
+
+                                                    <div class="box-body">
+                                                        <input type="hidden" name="cat_id" value="{{$c->id}}">
+                                                        <label for="exampleInputEmail1">Category</label>
+
+                                                        <input type="text" class="form-control" id="subcat{{$c->id}}" name="name" value="{{$c->name}}">
+
+                                                    </div>
+
+                                                    {{Form::close()}}
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                                    <input type="submit" class="btn btn-default" value="save">
+                                                    <button type="button" id="newssubcat" onclick="createCatEdit(this)" class="btn btn-default">Save changes</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
                                 @endforeach
 
                                 </tbody>
                             </table>
                             {!! $cat->links() !!}
                         </div>
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Дэд цэс</h3>
-                        </div>
+
                         {{--<div class="box-body">--}}
 
                             {{--<table class="table table-bordered" id="category-list">--}}

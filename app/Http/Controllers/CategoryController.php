@@ -39,7 +39,24 @@ class CategoryController extends Controller
             return redirect()->back()->with(['success'=>'Амжилттай']);
         }
     }
+    public function edit($id){
+        $cat = Category::find($id);
+        return view('');
+    }
 
+    public function update(Request $request){
+        $cat = Category::find($request->cat_id);
+        $cat->update([
+            'name' => $request->input('name')
+        ]);
+        if ($request->ajax()){
+
+            return json_encode($cat);
+        }
+        else{
+            return redirect()->back();
+        }
+    }
     public  function subCatPost(Request $request){
         $subcat = New SubCategory;
         $subcat->name = $request->name;
