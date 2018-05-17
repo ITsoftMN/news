@@ -37,6 +37,24 @@ function createSubCat(item){
     });
 }
 
+function createCatEdit(item) {
+    var form =  $(item).parent().parent().find('form');
+    var data = form.serialize();
+    var url = form.attr('action');
+    var post = form.attr('method');
+
+    $.ajax({
+        type: post,
+        url : url,
+        data: data,
+        dataType : 'json'
+    }).done(function (data) {
+        console.log(data.name);
+        alert("Successfully changed category");
+        window.setTimeout(function(){location.reload()},1000);
+    });
+}
+
 //news add slider
 
 function newsSlider(item){
