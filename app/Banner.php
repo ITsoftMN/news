@@ -13,5 +13,6 @@ class Banner extends Model
         'image',
         'links',
         'video_link',
+        'position',
     ];
 }

@@ -29,6 +29,12 @@
                                 {!! csrf_field() !!}
                                 <div class="form-group">
                                     <label for="">
+                                        Banner Position
+                                    </label>
+                                    <input type="text" class="form-control" name="position" placeholder="enter title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">
                                         Banner Links
                                     </label>
                                     <input type="text" class="form-control" name="banner_links" placeholder="enter title">

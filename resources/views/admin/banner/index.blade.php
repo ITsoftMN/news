@@ -15,7 +15,7 @@
                     @endif
                     <div class="box-header with-border">
                         <h3 class="box-title">Banner List</h3>
-                        
+
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
@@ -32,6 +32,7 @@
                                     <th>video links</th>
                                     <th>Image</th>
                                     <th>Time</th>
+                                    <th>Settings</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,8 +44,9 @@
                                         <td>{!! $n->title !!}</td>
                                         <td><img style="width:100px;" src="uploads/banner/{{$n->image}}"></td>
                                         <td>{{$n->created_at->diffForHumans()}}</td>
-
-
+                                        <td>
+                                            <a href="{{route('banner.edit',$n->id)}}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

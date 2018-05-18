@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Http\Resources\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -48,6 +49,7 @@ class BannerController extends Controller
             $original = time().'.'.$file->getClientOriginalExtension();
             $file->move('uploads/banner',$original);
 
+            $banner->position = $request->position;
             $banner->image = $original;
             $banner->links = $request->banner_links;
             $banner->video_link = $request->banner_video;
@@ -55,6 +57,7 @@ class BannerController extends Controller
 
             return redirect()->route('banner.index');
         }else{
+            $banner->position = $request->position;
             $banner->links = $request->banner_links;
             $banner->video_link = $request->banner_video;
             $banner->save();
@@ -82,6 +85,9 @@ class BannerController extends Controller
     public function edit(Banner $banner)
     {
         //
+        $banners = Banner::find($banner)->first();
+        //dd($edit);
+        return view('admin.banner.edit',compact('banners'));
     }
 
     /**
@@ -91,9 +97,31 @@ class BannerController extends Controller
      * @param  \App\Banner  $banner
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Banner $banner)
+    public function update(Request $request, $banner)
     {
         //
+        $banner = Banner::findOrFail($banner);
+        if($request->hasFile('file')){
+            $file = Input::file('file');
+            $original = time().'.'.$file->getClientOriginalExtension();
+            $file->move('uploads/banner',$original);
+
+            $banner->update([
+                'image' => $original,
+                'links' => $request->input('banner_links'),
+                'video_link' => $request->input('banner_video'),
+                'position'   => $request->input('position'),
+            ]);
+
+
+        }else{
+            $banner->update([
+                'links' => $request->input('banner_links'),
+                'video_link' => $request->input('banner_video'),
+                'position'   => $request->input('position'),
+            ]);
+        }
+        return redirect()->route('banner.index');
     }
 
     /**
