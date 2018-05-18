@@ -20,7 +20,8 @@ class FrontController extends Controller
                     $cityname = $name;
                         foreach ($d1['Weathers'] as $d2){
                         $nowDate  = $d2['Date'];
-                        if(date("Y-m-d") == $nowDate)
+                        $systemT = date("Y-m-d",strtotime("+1 day"));
+                        if($systemT == $nowDate)
                         {
                             $date = $d2['Date'];
                             $temp = $d2['TemperatureDay'];
