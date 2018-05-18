@@ -28,4 +28,7 @@ Route::get('/show-cat-sub/{id}','CategoryController@showSub');
 
 Route::resource('news','Newscontroller');
 Route::get('news/slider/add/{id}','Newscontroller@sliderFromNews');
+Route::get('/news/featured/add/{id}','Newscontroller@sliderFeatured');
+
 Route::resource('pages','PagesController');
+Route::resource('banner','BannerController');

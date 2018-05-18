@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Banner;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
+use Image;
 class BannerController extends Controller
 {
     /**
@@ -15,6 +17,9 @@ class BannerController extends Controller
     public function index()
     {
         //
+        $i = 1;
+        $banner = Banner::all();
+        return view('admin.banner.index',compact('i'))->with('banner',$banner);
     }
 
     /**
@@ -25,6 +30,7 @@ class BannerController extends Controller
     public function create()
     {
         //
+        return view('admin.banner.create');
     }
 
     /**
@@ -36,6 +42,24 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         //
+        $banner = new Banner;
+        if($request->hasFile('file')){
+            $file = Input::file('file');
+            $original = time().'.'.$file->getClientOriginalExtension();
+            $file->move('uploads/banner',$original);
+
+            $banner->image = $original;
+            $banner->links = $request->banner_links;
+            $banner->video_link = $request->banner_video;
+            $banner->save();
+
+            return redirect()->route('banner.index');
+        }else{
+            $banner->links = $request->banner_links;
+            $banner->video_link = $request->banner_video;
+            $banner->save();
+            return redirect()->route('banner.index');
+        }
     }
 
     /**

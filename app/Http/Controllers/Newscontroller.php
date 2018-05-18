@@ -102,7 +102,6 @@ class Newscontroller extends Controller
         $news = News::findOrFail($id);
         if($request->hasFile('file')){
 
-
             $filename = $request->file('file');
             $imageName = time().'.'.$filename->getClientOriginalExtension();
             Image::make($filename)->resize(600,null,function ($constraint){
@@ -146,16 +145,37 @@ class Newscontroller extends Controller
         if($slider->slider == 0)
         {
             $slider->update([
-                'slider' => 1
+                'slider' => 1,
+
             ]);
 
         }else{
             $slider->update([
-                'slider' => 0
+                'slider' => 0,
+
             ]);
 
         }
 
         return json_encode($slider->slider);
+    }
+    public function sliderFeatured($id)
+    {
+        $slider = News::find($id);
+        if($slider->featured == 0)
+        {
+            $slider->update([
+                'featured' => 1,
+            ]);
+
+        }else{
+            $slider->update([
+                'featured' => 0,
+
+            ]);
+
+        }
+
+        return json_encode($slider->featured);
     }
 }

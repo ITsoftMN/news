@@ -48,9 +48,20 @@
                                         <td>
                                             @if($n->slider == 0)
                                                 <button id="news-slider-add{{$n->id}}" onclick="newsSlider({{$n->id}})" class="btn btn-primary btn-xs">slider +</button>
+
+
                                             @else
                                                 <button id="news-slider-add{{$n->id}}" onclick="newsSlider({{$n->id}})" class="btn btn-danger btn-xs">slider -</button>
+
                                             @endif
+                                                @if($n->featured == 0)
+
+
+                                                    <button id="news-featured-add{{$n->id}}" onclick="newsFeatured({{$n->id}})" class="btn btn-primary btn-xs">featured +</button>
+                                                @else
+
+                                                    <button id="news-featured-add{{$n->id}}" onclick="newsFeatured({{$n->id}})" class="btn btn-danger btn-xs">featured -</button>
+                                                @endif
                                         </td>
                                         <td>
                                             <a href="{{route('news.edit',$n->id)}}" class="btn btn-warning btn-xs" title="edit">
@@ -67,7 +78,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.table-responsive -->
+
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
