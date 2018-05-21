@@ -142,7 +142,7 @@ $('.navbar-cat').click(function () {
 
 
 $(document).ready(function () {
-    console.log('sdad');
+    //console.log('sdad');
     var currentdate = new Date();
     var d = "Now: " + currentdate.getDate() + "/"
         + (currentdate.getMonth()+1)  + "/"
@@ -152,4 +152,15 @@ $(document).ready(function () {
         + currentdate.getSeconds();
     $('#now-date').html(d);
     console.log(d);
+});
+
+$('#settings-edit').click(function () {
+    console.log('asdasd');
+    $("#title1").prop('disabled', false);
+    $("#title2").prop('disabled', false);
+    $("#title3").prop('disabled', false);
+    $("#title4").prop('disabled', false);
+    $("#title5").prop('disabled', false);
+    $("#settings-edit").remove();
+    $("#setting-btn-edit").append(" <button type='submit' class='btn btn-primary'>Save</button>");
 });

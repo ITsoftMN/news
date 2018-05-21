@@ -32,3 +32,5 @@ Route::get('/news/featured/add/{id}','Newscontroller@sliderFeatured');
 
 Route::resource('pages','PagesController');
 Route::resource('banner','BannerController');
+
+Route::resource('settings','SettingController');
