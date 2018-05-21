@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Http\Resources\News;
 use App\Setting;
 use Illuminate\Http\Request;
+
 
 class FrontController extends Controller
 {
@@ -25,21 +28,12 @@ class FrontController extends Controller
                         $systemT = date("Y-m-d",strtotime("+1 day"));
                         //dd($systemT,$nowDate);
 
-                        if($nowDate == '' || $nowDate == null){
                             if($systemT == $nowDate)
                             {
                                 $date = $d2['Date'];
                                 $temp = $d2['TemperatureDay'];
                                 $pNight = $d2['PhenoNight'];
                             }
-                        }
-                        else{
-                            if(date("Y-m-d") == $nowDate){
-                                $date = $d2['Date'];
-                                $temp = $d2['TemperatureDay'];
-                                $pNight = $d2['PhenoNight'];
-                            }
-                        }
                     }
                 }
             }
@@ -55,8 +49,15 @@ class FrontController extends Controller
         }
 
         $setting = Setting::first();
+        $category = Category::all();
+        $homeslider = \App\News::where('slider',1)->get();
+        $news = \App\News::all();
 
         return view('front.pages.home',compact('date','temp','pNight','cityname','dollarN','dollarC'))
-            ->with('setting',$setting);
+            ->with('setting',$setting)
+            ->with('category',$category)
+            ->with('homeslider',$homeslider)
+            ->with('news',$news)
+            ;
     }
 }

@@ -48,12 +48,10 @@
                 </div>
                 <ul class="main-nav nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Lifestyle</a></li>
-                    <li><a href="#">Fashion</a></li>
-                    <li><a href="#">Music</a></li>
-                    <li><a href="#">Business</a></li>
+                    @foreach($category as $c)
+                        <li><a href="{{$c->links}}">{{$c->name}}</a></li>
+                    @endforeach
+
                 </ul>
             </nav>
             <div class="button-nav">
