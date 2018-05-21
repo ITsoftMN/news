@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Setting;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -22,8 +23,9 @@ class FrontController extends Controller
                         $nowDate  = $d2['Date'];
 
                         $systemT = date("Y-m-d",strtotime("+1 day"));
+                        //dd($systemT,$nowDate);
 
-                        if($nowDate == ''){
+                        if($nowDate == '' || $nowDate == null){
                             if($systemT == $nowDate)
                             {
                                 $date = $d2['Date'];
@@ -51,6 +53,10 @@ class FrontController extends Controller
                 $dollarC = $d['rate'];
             }
         }
-        return view('front.pages.home',compact('date','temp','pNight','cityname','dollarN','dollarC'));
+
+        $setting = Setting::first();
+
+        return view('front.pages.home',compact('date','temp','pNight','cityname','dollarN','dollarC'))
+            ->with('setting',$setting);
     }
 }

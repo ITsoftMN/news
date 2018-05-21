@@ -106,8 +106,6 @@ class SettingController extends Controller
                 'you_link'   => $request->input('youtube'),
 
             ]);
-
-
         }else{
             $banner->update([
                 'title' => $request->input('title'),
@@ -126,8 +124,9 @@ class SettingController extends Controller
      * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Setting $setting)
+    public function destroy($setting)
     {
         //
+
     }
 }
