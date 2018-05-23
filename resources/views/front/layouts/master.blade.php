@@ -9,7 +9,7 @@
     <title>News+</title>
 
     <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CLato:300,400" rel="stylesheet">
+
 
     <!-- Bootstrap -->
     <link type="text/css" rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}"/>

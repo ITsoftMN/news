@@ -4,11 +4,11 @@
         <div class="container">
             <div class="header-links">
                 <ul>
-                    <li><a href="#">{{$date}}, +{{$temp}}, {{$pNight}}</a></li>
-                    <li><a href="#">{{$cityname}}</a></li>
-                    <li><a href="#">{{$dollarN}}</a></li>
-                    <li><a href="#">{{$dollarC}} ₮</a></li>
-                    <li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
+                    {{--<li><a href="#">{{$date}}, +{{$temp}}, {{$pNight}}</a></li>--}}
+                    {{--<li><a href="#">{{$cityname}}</a></li>--}}
+                    {{--<li><a href="#">{{$dollarN}}</a></li>--}}
+                    {{--<li><a href="#">{{$dollarC}} ₮</a></li>--}}
+                    {{--<li><a href="{{ route('login') }}"><i class="fa fa-sign-in"></i> Login</a></li>--}}
 
                 </ul>
             </div>

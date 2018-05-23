@@ -13,7 +13,7 @@
             <h2 class="article-title"><a href="#">{{$h->title}}</a></h2>
             <ul class="article-meta">
                 <li title="{{$h->created_at}}"><i class="fa fa-clock-o"></i> {{$h->created_at->diffForHumans()}}</li>
-                <li><i class="fa fa-comments"></i> 33</li>
+                <li><i class="fa fa-comments"></i>{{count($h->commend)}}</li>
             </ul>
         </div>
     </article>

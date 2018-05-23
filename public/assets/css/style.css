@@ -1,36 +1,4 @@
-/*
-Template Name:  News & Magazine Template
-Author: yaminncco
 
-Colors:
-	Body 		: #2C2C2C
-	Headers 	: #07090C
-	Primary 	: #EF233C
-	Dark 		: #07090C #222
-	Grey 		: #DDD
-
-Fonts: Open Sans Lato
-
-Table OF Contents
-------------------------------------
-1 > General
-2 > Header
-3 > Section
-4 > Article
-5 > Widget
-6 > Article Post
-7 > Footer
-8 > Owl Theme
-9 > Responsive
-10 > Back to Top
-------------------------------------*/
-
-/*=========================================================
-	GENERAL
-===========================================================*/
-/*----------------------------*\
-	typography
-\*----------------------------*/
 body {
 	font-family: 'Lato', sans-serif;
 	color:#2C2C2C;

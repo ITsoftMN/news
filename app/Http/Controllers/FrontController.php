@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Resources\News;
+use App\News;
 use App\Setting;
 use Illuminate\Http\Request;
 
@@ -50,14 +50,21 @@ class FrontController extends Controller
 
         $setting = Setting::first();
         $category = Category::all();
-        $homeslider = \App\News::where('slider',1)->get();
-        $news = \App\News::all();
+        $homeslider = News::where('slider',1)->orderBy('created_at','desc')->get();
+        $news = News::all();
+        $cat_id = Category::select('id')->get();
+        $featured = News::where('featured',1)->orderBy('created_at','desc')->limit(4)->get();
+
+        $catnews = News::all();
+        //dd($category1);
 
         return view('front.pages.home',compact('date','temp','pNight','cityname','dollarN','dollarC'))
             ->with('setting',$setting)
             ->with('category',$category)
             ->with('homeslider',$homeslider)
             ->with('news',$news)
+            ->with('featured',$featured)
+            ->with('catnews',$catnews)
             ;
     }
 }
