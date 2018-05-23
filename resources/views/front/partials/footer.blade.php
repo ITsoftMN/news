@@ -10,7 +10,7 @@
                     <!-- footer about -->
                     <div class="footer-widget about-widget">
                         <div class="footer-logo">
-                            <a href="#" class="logo"><img src="./img/logo-alt.png" alt=""></a>
+                            <a href="#" class="logo"><img src="/uploads/settings/logo/{{$setting->logo}}" alt=""></a>
                             <p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui.</p>
                         </div>
                     </div>
@@ -30,19 +30,7 @@
                             <li><a href="#" class="rss"><i class="fa fa-rss"></i></a></li>
                         </ul>
                     </div>
-                    <!-- /footer social -->
 
-                    <!-- footer subscribe -->
-                    <div class="footer-widget subscribe-widget">
-                        <div class="widget-title">
-                            <h2 class="title">Subscribe to Newslatter</h2>
-                        </div>
-                        <form>
-                            <input class="input" type="email" placeholder="Enter Your Email">
-                            <button class="input-btn">Subscribe</button>
-                        </form>
-                    </div>
-                    <!-- /footer subscribe -->
                 </div>
                 <!-- /Column 1 -->
 
@@ -58,7 +46,7 @@
                         <article class="article widget-article">
                             <div class="article-img">
                                 <a href="#">
-                                    <img src="./img/img-widget-1.jpg" alt="">
+                                    <img src="{{asset('assets/img/img-widget-1.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="article-body">
@@ -75,7 +63,7 @@
                         <article class="article widget-article">
                             <div class="article-img">
                                 <a href="#">
-                                    <img src="./img/img-widget-2.jpg" alt="">
+                                    <img src="{{asset('assets/img/img-widget-2.jpg')}}" alt="">
                                 </a>
                             </div>
                             <div class="article-body">
@@ -88,22 +76,6 @@
                         </article>
                         <!-- /ARTICLE -->
 
-                        <!-- ARTICLE -->
-                        <article class="article widget-article">
-                            <div class="article-img">
-                                <a href="#">
-                                    <img src="./img/img-widget-3.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="article-body">
-                                <h4 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h4>
-                                <ul class="article-meta">
-                                    <li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-                                    <li><i class="fa fa-comments"></i> 33</li>
-                                </ul>
-                            </div>
-                        </article>
-                        <!-- /ARTICLE -->
                     </div>
                     <!-- /footer article -->
                 </div>
@@ -117,14 +89,11 @@
                             <h2 class="title">Flickr Photos</h2>
                         </div>
                         <ul>
-                            <li><a href="#"><img src="./img/img-widget-3.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="./img/img-widget-4.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="./img/img-widget-5.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="./img/img-widget-6.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="./img/img-widget-7.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="./img/img-widget-8.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="./img/img-widget-9.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="./img/img-widget-10.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/img/img-widget-3.jpg')}}" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/img/img-widget-4.jpg')}}" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/img/img-widget-5.jpg')}}" alt=""></a></li>
+                            <li><a href="#"><img src="{{asset('assets/img/img-widget-6.jpg')}}" alt=""></a></li>
+
                         </ul>
                     </div>
                     <!-- /footer galery -->

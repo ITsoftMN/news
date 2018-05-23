@@ -57,6 +57,7 @@ class FrontController extends Controller
 
         $catnews = News::all();
         //dd($category1);
+        $new = News::orderBy('created_at','desc')->limit(6)->get();
 
         return view('front.pages.home',compact('date','temp','pNight','cityname','dollarN','dollarC'))
             ->with('setting',$setting)
@@ -65,6 +66,7 @@ class FrontController extends Controller
             ->with('news',$news)
             ->with('featured',$featured)
             ->with('catnews',$catnews)
+            ->with('new',$new)
             ;
     }
 }

@@ -107,7 +107,7 @@
                     <div class="widget-title">
                         <h2 class="title">Most Read</h2>
                     </div>
-
+                    
                     <!-- owl carousel 3 -->
                     <div id="owl-carousel-3" class="owl-carousel owl-theme center-owl-nav">
                         <!-- ARTICLE -->
