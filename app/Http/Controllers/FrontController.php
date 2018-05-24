@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Commend;
 use App\News;
 use App\Setting;
 use Illuminate\Http\Request;
@@ -67,6 +68,18 @@ class FrontController extends Controller
             ->with('featured',$featured)
             ->with('catnews',$catnews)
             ->with('new',$new)
+            ;
+    }
+    public  function newsDesc($id){
+        $category = Category::all();
+        $setting = Setting::first();
+        $news = News::find($id);
+        $commend = Commend::orderBy('created_at','desc')->get();
+        return view('front.pages.news-desc')
+            ->with('news',$news)
+            ->with('setting',$setting)
+            ->with('category',$category)
+            ->with('commend',$commend)
             ;
     }
 }

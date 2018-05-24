@@ -178,4 +178,5 @@ class Newscontroller extends Controller
 
         return json_encode($slider->featured);
     }
+
 }

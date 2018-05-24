@@ -26,4 +26,9 @@ class News extends Model
     {
         return $this->belongsTo('App\Category','cat_id');
     }
+
+    public function Commend()
+    {
+        return $this->belongsTo('App\Commend','commend_id');
+    }
 }

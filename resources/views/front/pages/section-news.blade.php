@@ -111,6 +111,7 @@
                     <!-- owl carousel 3 -->
                     <div id="owl-carousel-3" class="owl-carousel owl-theme center-owl-nav">
                         <!-- ARTICLE -->
+
                         <article class="article">
                             <div class="article-img">
                                 <a href="#">

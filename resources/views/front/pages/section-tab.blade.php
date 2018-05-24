@@ -22,7 +22,7 @@
                                         </ul>
                                     </div>
                                     <div class="article-body">
-                                        <h4 class="article-title"><a href="#">{{$n->title}}</a></h4>
+                                        <h4 class="article-title"><a href="{{url('news/desc',$n->id)}}">{{$n->title}}</a></h4>
                                         <ul class="article-meta">
                                             <li><i class="fa fa-clock-o"></i> {{$n->created_at->diffForHumans()}}</li>
                                             <li><i class="fa fa-comments">{{count($n->commend)}}</i></li>

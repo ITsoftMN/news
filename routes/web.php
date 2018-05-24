@@ -17,6 +17,9 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/news/desc/{id}','FrontController@newsDesc');
+
+
 //category
 Route::get('/category/show','CategoryController@index');
 Route::post('/category/post','CategoryController@post');
@@ -29,6 +32,8 @@ Route::get('/show-cat-sub/{id}','CategoryController@showSub');
 Route::resource('news','Newscontroller');
 Route::get('news/slider/add/{id}','Newscontroller@sliderFromNews');
 Route::get('/news/featured/add/{id}','Newscontroller@sliderFeatured');
+
+Route::post('/front/commend/add','CommendController@commendAdd');
 
 Route::resource('pages','PagesController');
 Route::resource('banner','BannerController');
