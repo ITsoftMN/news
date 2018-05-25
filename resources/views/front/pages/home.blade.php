@@ -30,11 +30,11 @@
                                         <li class="article-category"><a href="#">{{$n->category->name}}</a></li>
                                         <li class="article-type"><i class="fa fa-video-camera"></i></li>
                                     </ul>
-                                    <h3 class="article-title"><a href="#">{{$n->title}}</a></h3>
+                                    <h5 class="article-title"><a href="#">{{$n->title}}</a></h5>
                                     <ul class="article-meta">
                                         <li><i class="fa fa-clock-o"></i> {{$n->created_at->diffForHumans()}}</li>
-                                        <li><i class="fa fa-comments">{{count($n->Commend)}}</i></li>
-                                        <li><i class="fa fa-heart">{{$n->seen}}</i></li>
+                                        <li><i class="fa fa-comments"> {{count($n->Commend)}}</i></li>
+                                        <li><i class="fa fa-heart"> {{$n->seen}}</i></li>
                                     </ul>
                                 </div>
                             </article>

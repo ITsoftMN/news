@@ -25,8 +25,8 @@
                                         <h5 class="article-title"><a href="{{url('news/desc',$n->id)}}">{{$n->title}}</a></h5>
                                         <ul class="article-meta">
                                             <li><i class="fa fa-clock-o"></i> {{$n->created_at->diffForHumans()}}</li>
-                                            <li><i class="fa fa-comments">{{count($n->Commend)}}</i></li>
-                                            <li><i class="fa fa-heart">{{$n->seen}}</i></li>
+                                            <li><i class="fa fa-comments"> {{count($n->Commend)}}</i></li>
+                                            <li><i class="fa fa-heart"> {{$n->seen}}</i></li>
                                         </ul>
                                     </div>
                                 </article>

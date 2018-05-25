@@ -210,7 +210,7 @@ textarea.input {
 }
 
 .main-nav li a {
-	padding: 25px 15px;
+	padding: 15px 15px;
 	color: #FFF;
 	text-transform: uppercase;
 }
@@ -229,7 +229,7 @@ textarea.input {
 }
 
 .button-nav > button {
-	padding: 25px 25px;
+	padding: 15px 25px;
 	border: none;
 	line-height: 20px;
 	background: transparent;
@@ -395,11 +395,11 @@ textarea.input {
 	margin-top: 0;
 	margin-bottom: 0;
 	text-transform: uppercase;
-	line-height: 45px;
-	font-size:15px;
+	line-height: 35px;
+	font-size:12px;
 	color:#FFF;
 	background-color:#222;
-	padding:0px 15px;
+	padding:0px 20px;
 }
 
 .section-title .title:after {
@@ -549,13 +549,13 @@ textarea.input {
 
 .article .article-info .article-category > a {
 	display:block;
-	padding: 0px 15px;
-	height: 30px;
-	line-height: 30px;
+	padding: 0px 10px;
+	height: 25px;
+	line-height: 25px;
 	background: #EF233C;
 	color: #FFF;
 	text-transform: uppercase;
-	font-size: 12.5px;
+	font-size: 10px;
 }
 
 .article .article-info .article-category > a:hover {
@@ -569,6 +569,7 @@ textarea.input {
 
 .article .article-title > a {
 	font-weight:700;
+	text-transform: none;
 }
 
 .article .article-meta {
@@ -580,7 +581,7 @@ textarea.input {
 	display:inline-block;
 	color:#DDD;
 	font-weight:400;
-	font-size:12.5px;
+	font-size: 10px;
 	text-transform:uppercase;
 }
 
@@ -1167,9 +1168,9 @@ textarea.input {
 \*------------------------------------*/
 .custom-owl-nav > div {
 	position:relative;
-	height: 45px;
-	width: 45px;
-	line-height: 45px;
+	height: 35px;
+	width: 35px;
+	line-height: 35px;
 	display: inline-block;
 	border:1px solid #DDD;
 	background-color:transparent;

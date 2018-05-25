@@ -60,16 +60,15 @@ class FrontController extends Controller
         //dd($category1);
         $new = News::orderBy('created_at','desc')->limit(6)->get();
 
-        $maxSeen = News::max('seen');
-        $max = News::where('seen',$maxSeen)->get();
+        $max = News::orderBy('seen','desc')->limit(4)->get();
         $arr = [];
         foreach ($news as $n){
           $arr[$n->id] = count($n->Commend);
 
         }
-        $max = max(array_keys($arr));
+        //$max = max(array_keys($arr));
 
-    
+
         return view('front.pages.home',compact('date','temp','pNight','cityname','dollarN','dollarC'))
             ->with('setting',$setting)
             ->with('category',$category)
