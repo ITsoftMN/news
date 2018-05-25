@@ -32,8 +32,9 @@
                                     </ul>
                                     <h3 class="article-title"><a href="#">{{$n->title}}</a></h3>
                                     <ul class="article-meta">
-                                        <li><i class="fa fa-clock-o"></i>{{$n->created_at->diffForHumans()}}</li>
-                                        <li><i class="fa fa-comments"></i> 33</li>
+                                        <li><i class="fa fa-clock-o"></i> {{$n->created_at->diffForHumans()}}</li>
+                                        <li><i class="fa fa-comments">{{count($n->Commend)}}</i></li>
+                                        <li><i class="fa fa-heart">{{$n->seen}}</i></li>
                                     </ul>
                                 </div>
                             </article>

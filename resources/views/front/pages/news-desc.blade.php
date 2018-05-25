@@ -1,6 +1,7 @@
 @extends('front.layouts.master')
 @section('content')
     @include('front.partials.header')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="section">
         <!-- CONTAINER -->
         <div class="container">
@@ -77,6 +78,21 @@
                                 <p>{!! $c->commend_text !!}</p>
                                 <span id="commend-replay" onclick="replayCommend({{$c->id}})"  class="reply-btn"> хариулах</span>
                             </div>
+
+                            @foreach($c->CommendReplay as $item)
+                                <div class="media">
+                                    <div class="media-left">
+                                        <img src="{{asset('assets/img/av-1.jpg')}}" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <div class="media-heading">
+                                            <h5>{{$item->user_name}}<span class="reply-time">April 04, 2017 At 9:30 AM</span></h5>
+                                        </div>
+                                        <p>{{$item->commend_text }}</p>
+                                        <a href="#" class="reply-btn">Reply</a>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                         @endforeach
                     </div>

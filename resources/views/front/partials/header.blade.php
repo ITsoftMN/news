@@ -30,7 +30,7 @@
     <div id="center-header">
         <div class="container">
             <div class="header-logo">
-                <a href="#" class="logo"><img src="/uploads/settings/logo/{{$setting->logo}}" alt=""></a>
+                <a href="{{url('/')}}" class="logo"><img src="/uploads/settings/logo/{{$setting->logo}}" alt=""></a>
             </div>
             <div class="header-ads">
                 <img class="center-block" src="{{asset('assets/img/ad-2.jpg')}}" alt="">

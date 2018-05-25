@@ -60,6 +60,16 @@ class FrontController extends Controller
         //dd($category1);
         $new = News::orderBy('created_at','desc')->limit(6)->get();
 
+        $maxSeen = News::max('seen');
+        $max = News::where('seen',$maxSeen)->get();
+        $arr = [];
+        foreach ($news as $n){
+          $arr[$n->id] = count($n->Commend);
+
+        }
+        $max = max(array_keys($arr));
+
+    
         return view('front.pages.home',compact('date','temp','pNight','cityname','dollarN','dollarC'))
             ->with('setting',$setting)
             ->with('category',$category)
@@ -68,12 +78,19 @@ class FrontController extends Controller
             ->with('featured',$featured)
             ->with('catnews',$catnews)
             ->with('new',$new)
+            ->with('max',$max)
             ;
     }
     public  function newsDesc($id){
+        $news = News::find($id);
+
+        $news->update([
+            'seen' => $news->seen+1,
+        ]);
+
         $category = Category::all();
         $setting = Setting::first();
-        $news = News::find($id);
+
         $commend = Commend::where('news_id',$id)->orderBy('created_at','desc')->get();
         return view('front.pages.news-desc')
             ->with('news',$news)

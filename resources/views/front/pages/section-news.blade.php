@@ -30,10 +30,11 @@
                                         </ul>
                                     </div>
                                     <div class="article-body">
-                                        <h3 class="article-title"><a href="#">{{$item->title}}</a></h3>
+                                        <h3 class="article-title"><a href="{{url('news/desc',$item->id)}}">{{$item->title}}</a></h3>
                                         <ul class="article-meta">
-                                            <li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-                                            <li><i class="fa fa-comments"></i> 33</li>
+                                            <li><i class="fa fa-clock-o"></i> {{$item->created_at->diffForHumans()}}</li>
+                                            <li><i class="fa fa-comments"> {{count($item->Commend)}}</i></li>
+                                            <li><i class="fa fa-heart"> {{$item->seen}}</i></li>
                                         </ul>
                                         <p>
                                             {!! substr($item->description,0,240) !!}...
@@ -48,10 +49,11 @@
                                         </a>
                                     </div>
                                     <div class="article-body">
-                                        <h4 class="article-title"><a href="#">{{$item->title}}</a></h4>
+                                        <h4 class="article-title"><a href="{{url('news/desc',$item->id)}}">{{$item->title}}</a></h4>
                                         <ul class="article-meta">
-                                            <li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-                                            <li><i class="fa fa-comments"></i> 33</li>
+                                            <li><i class="fa fa-clock-o"></i> {{$item->created_at->diffForHumans()}}</li>
+                                            <li><i class="fa fa-comments"> {{count($item->Commend)}}</i></li>
+                                            <li><i class="fa fa-heart"> {{$item->seen}}</i></li>
                                         </ul>
                                     </div>
                                 </article>
@@ -109,26 +111,60 @@
                     </div>
 
                     <!-- owl carousel 3 -->
-                    <div id="owl-carousel-3" class="owl-carousel owl-theme center-owl-nav">
+                    <div id="owl-carousel-4" class="owl-carousel owl-theme">
                         <!-- ARTICLE -->
 
-                        <article class="article">
-                            <div class="article-img">
-                                <a href="#">
-                                    <img src="./img/img-md-3.jpg" alt="">
-                                </a>
-                                <ul class="article-info">
-                                    <li class="article-type"><i class="fa fa-file-text"></i></li>
-                                </ul>
-                            </div>
-                            <div class="article-body">
-                                <h4 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h4>
-                                <ul class="article-meta">
-                                    <li><i class="fa fa-clock-o"></i> January 31, 2017</li>
-                                    <li><i class="fa fa-comments"></i> 33</li>
-                                </ul>
-                            </div>
-                        </article>
+                        @foreach($max as $m)
+                            <article class="article thumb-article">
+                                <div class="article-img">
+                                    <a href="#">
+                                        <img src="/uploads/news/small/{{$m->image}}" alt="">
+                                    </a>
+
+                                </div>
+                                <div class="article-body">
+                                    <ul class="article-info">
+                                        <li class="article-category"><a href="#">{{$m->category->name}}</a></li>
+                                        <li class="article-type"><i class="fa fa-video-camera"></i></li>
+                                    </ul>
+                                    <h5 class="article-title"><a href="{{url('news/desc',$m->id)}}">{{$m->title}}</a></h5>
+                                    <ul class="article-meta">
+                                        <li title="{{$m->created_at}}"><i class="fa fa-clock-o"></i> {{$m->created_at->diffForHumans()}}</li>
+                                        <li><i class="fa fa-comments"></i> {{count($m->Commend)}}</li>
+                                        <li><i class="fa fa-heart"></i> {{$m->seen}}</li>
+                                    </ul>
+                                </div>
+                            </article>
+                        @endforeach
+                    </div>
+
+                    <div class="widget">
+                        <div class="widget-title">
+                            <h2 class="title">Most Read</h2>
+                        </div>
+
+                        <!-- owl carousel 3 -->
+                        <div id="owl-carousel-3" class="owl-carousel owl-theme center-owl-nav">
+
+                            <article class="article">
+                                <div class="article-img">
+                                    <a href="#">
+                                        <img src="./img/img-md-3.jpg" alt="">
+                                    </a>
+                                    <ul class="article-info">
+                                        <li class="article-type"><i class="fa fa-file-text"></i></li>
+                                    </ul>
+                                </div>
+                                <div class="article-body">
+                                    <h4 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h4>
+                                    <ul class="article-meta">
+                                        <li><i class="fa fa-clock-o"></i> January 31, 2017</li>
+                                        <li><i class="fa fa-comments"></i> 33</li>
+                                    </ul>
+                                </div>
+                            </article>
+
+                        </div>
 
                     </div>
 

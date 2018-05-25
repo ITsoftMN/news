@@ -29,6 +29,6 @@ class News extends Model
 
     public function Commend()
     {
-        return $this->belongsTo('App\Commend','commend_id');
+        return $this->hasMany('App\Commend','news_id');
     }
 }

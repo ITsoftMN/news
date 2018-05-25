@@ -9,12 +9,10 @@ class CommendReplayController extends Controller
 {
     //
     public function replayAdd(Request $request, $id){
-        dd($request->all());
         $replay = new CommendReplay;
-        $replay->user_name = $request->input('name');
-        $replay->commend_text = $request->input('text');
+        $replay->user_name = $request->name;
+        $replay->commend_text = $request->text;
         $replay->commend_id = $id;
-
         $replay->save();
 
         if ($request->ajax()){
