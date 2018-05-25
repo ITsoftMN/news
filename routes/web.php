@@ -34,6 +34,7 @@ Route::get('news/slider/add/{id}','Newscontroller@sliderFromNews');
 Route::get('/news/featured/add/{id}','Newscontroller@sliderFeatured');
 
 Route::post('/front/commend/add','CommendController@commendAdd');
+Route::post('/front/commend/replay/{id}','CommendReplayController@replayAdd');
 
 Route::resource('pages','PagesController');
 Route::resource('banner','BannerController');

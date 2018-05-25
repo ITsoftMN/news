@@ -74,7 +74,7 @@ class FrontController extends Controller
         $category = Category::all();
         $setting = Setting::first();
         $news = News::find($id);
-        $commend = Commend::orderBy('created_at','desc')->get();
+        $commend = Commend::where('news_id',$id)->orderBy('created_at','desc')->get();
         return view('front.pages.news-desc')
             ->with('news',$news)
             ->with('setting',$setting)
