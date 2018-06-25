@@ -137,6 +137,7 @@ class Newscontroller extends Controller
     public function destroy($id)
     {
         //
+
     }
 
     public function sliderFromNews($id)

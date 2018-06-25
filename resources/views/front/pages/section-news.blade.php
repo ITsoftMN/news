@@ -104,7 +104,7 @@
                             </article>
                         @endforeach
                     </div>
-                    
+
                 </div>
                 <!-- Ad widget -->
                 <div class="widget center-block hidden-xs">

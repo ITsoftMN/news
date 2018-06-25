@@ -82,6 +82,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin/ajax.js') }}"></script>
 <script src="{{ asset('admin/demo.js') }}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     $(function () {
         // Replace the <textarea id="editor1"> with a CKEditor
@@ -91,5 +92,6 @@
         $('.textarea').wysihtml5()
     })
 </script>
+
 </body>
 </html>

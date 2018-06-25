@@ -3,7 +3,7 @@
 @section('content')
     @include('admin.partials.header')
     @include('admin.partials.sidebar')
-
+    @include('sweetalert::alert')
     <div class="content-wrapper">
         <section class="content">
             <div class="col-md-12">
@@ -68,9 +68,33 @@
                                                 <i class="fa fa-edit"></i>
                                             </a>
 
-                                            <a href="#" class="btn btn-danger btn-xs" title="delete">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
+                                            {!! Form::open(['method' => 'DELETE', 'route' => ['news.destroy',$n->id] ,'id' => 'confirm_delete'.$n->id]) !!}
+
+                                                {!! Form::submit("delete",['class' => 'btn btn-danger btn-xs']) !!}
+
+                                                <script>
+                                                    document.querySelector('#confirm_delete{{$n->id}}').addEventListener('submit', function (e) {
+                                                        var form = this;
+                                                        e.preventDefault();
+
+                                                        swal({
+                                                            title: "Are you sure?",
+                                                            text: "Once deleted, you will not be able to recover this imaginary file!",
+                                                            icon: "warning",
+                                                            buttons: true,
+                                                            dangerMode: true,
+                                                        }).then((willDelete) => {
+                                                            switch(){
+                                                            case "catch":
+                                                                form.submit();
+                                                                break;
+                                                            }
+                                                        })
+
+                                                    })
+
+                                                </script>
+                                            {!! Form::close() !!}
 
                                         </td>
                                     </tr>

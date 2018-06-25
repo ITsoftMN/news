@@ -103,13 +103,29 @@
                         </div>
 
                         {{Form::open(['action'=>'CommendController@commendAdd'])}}
+
+
                             <input type="hidden" name="commend_news_id" value="{{$news->id}}">
                             <input class="input" name="commend_user" placeholder="Нэрээ бичнэ үү" type="text">
                             <textarea class="input" name="commend_body" placeholder="Сэтгэгдэл оруулна уу"></textarea>
                             <button type="button" onclick="commendAdd(this)" class="input-btn">Илгээх</button>
+
+                            
                         {{Form::close()}}
                     </div>
                     <!-- /reply form -->
+
+                    <div class="widget-tags">
+                        <ul>
+                            <li><a href="#">News</a></li>
+                            <li><a href="#">Sport</a></li>
+                            <li><a href="#">Lifestyle</a></li>
+                            <li><a href="#">Fashion</a></li>
+                            <li><a href="#">Music</a></li>
+                            <li><a href="#">Business</a></li>
+                        </ul>
+                    </div>
+
                 </div>
                 <!-- /Main Column -->
 
